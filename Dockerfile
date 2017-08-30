@@ -13,6 +13,7 @@ WORKDIR /opt/spigot
 COPY --from=spigot-builder /tmp/spigot/spigot*.jar spigot-$SPIGOT_VERSION.jar
 COPY config/* /opt/spigot/
 RUN useradd -d /opt/spigot -M -U spigot && \
+	mkdir -p /opt/spigot/{logs,plugins,worlds} && \
 	chown -R spigot:spigot /opt/spigot
 USER spigot
 ARG MC_EULA=false
@@ -32,3 +33,4 @@ ARG MC_SERVER_RCON_PORT=25567
 ENV MC_SERVER_RCON_PORT ${MC_SERVER_RCON_PORT:-25567}
 ARG MC_SERVER_RCON_PASS
 ENV MC_SERVER_RCON_PASS ${MC_SERVER_RCON_PASS}
+VOLUME /opt/spigot/logs /opt/spigot/plugins /opt/spigot/worlds
