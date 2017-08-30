@@ -33,4 +33,10 @@ ARG MC_SERVER_RCON_PORT=25567
 ENV MC_SERVER_RCON_PORT ${MC_SERVER_RCON_PORT:-25567}
 ARG MC_SERVER_RCON_PASS
 ENV MC_SERVER_RCON_PASS ${MC_SERVER_RCON_PASS}
+RUN sed -i 's/\(server-port=\)[[:print:]]*/\1'"$MC_SERVER_PORT"'/g' server.properties && \
+	sed -i 's/\(enable-query=\)[[:print:]]*/\1'"$MC_SERVER_QUERY"'/g' server.properties && \
+	sed -i 's/\(enable-rcon=\)[[:print:]]*/\1'"$MC_SERVER_RCON"'/g' server.properties && \
+	sed -i 's/\(query.port=\)[[:print:]]*/\1'"$MC_SERVER_QUERY_PORT"'/g' server.properties && \
+	sed -i 's/\(rcon.port=\)[[:print:]]*/\1'"$MC_SERVER_RCON_PORT"'/g' server.properties && \
+	sed -i 's/\(rcon.password=\)[[:print:]]*/\1'"$MC_SERVER_RCON_PASS"'/g' server.properties
 VOLUME /opt/spigot/logs /opt/spigot/plugins /opt/spigot/worlds
