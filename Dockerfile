@@ -17,6 +17,7 @@ RUN useradd -d /opt/spigot -M -U spigot && \
 USER spigot
 ARG MC_EULA=false
 ENV MC_EULA ${MC_EULA:-false}
+RUN echo eula=$MC_EULA >> eula.txt
 ARG MC_SERVER_MEM=1024M
 ENV MC_SERVER_MEM ${MC_SERVER_MEM:-1024M}
 ARG MC_SERVER_PORT=25565
