@@ -6,7 +6,7 @@ RUN yum install git && \
 	curl -o BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar && \
 	java -jar BuildTools.jar -rev $SPIGOT_VERSION
 
-FROM kriation/centos7-jre8
+FROM kriation/centos7-jre8 as spigot-config
 ARG SPIGOT_VERSION=latest
 ENV SPIGOT_VERSION ${SPIGOT_VERSION:-latest}
 WORKDIR /opt/spigot
