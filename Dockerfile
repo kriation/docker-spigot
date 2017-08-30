@@ -11,6 +11,7 @@ ARG SPIGOT_VERSION=latest
 ENV SPIGOT_VERSION ${SPIGOT_VERSION:-latest}
 WORKDIR /opt/spigot
 COPY --from=spigot-builder /tmp/spigot/spigot*.jar spigot-$SPIGOT_VERSION.jar
+COPY config/* /opt/spigot/
 RUN useradd -d /opt/spigot -M -U spigot && \
 	chown -R spigot:spigot /opt/spigot
 USER spigot
