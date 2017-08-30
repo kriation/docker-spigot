@@ -41,3 +41,4 @@ RUN sed -i 's/\(server-port=\)[[:print:]]*/\1'"$MC_SERVER_PORT"'/g' server.prope
 	sed -i 's/\(rcon.password=\)[[:print:]]*/\1'"$MC_SERVER_RCON_PASS"'/g' server.properties
 EXPOSE $MC_SERVER_PORT $MC_SERVER_QUERY_PORT $MC_SERVER_RCON_PORT
 VOLUME /opt/spigot/logs /opt/spigot/plugins /opt/spigot/worlds
+ENTRYPOINT java -Xms$MC_SERVER_MEM -XX:+UseG1GC -jar spigot-$SPIGOT_VERSION.jar --noconsole --world-dir /opt/spigot/worlds
