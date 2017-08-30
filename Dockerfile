@@ -10,7 +10,7 @@ FROM kriation/centos7-jre8 as spigot-config
 ARG SPIGOT_VERSION=latest
 ENV SPIGOT_VERSION ${SPIGOT_VERSION:-latest}
 WORKDIR /opt/spigot
-COPY --from=spigot-builder /tmp/spigot/spigot*.jar .
+COPY --from=spigot-builder /tmp/spigot/spigot*.jar spigot-$SPIGOT_VERSION.jar
 RUN useradd -d /opt/spigot -M -U spigot && \
 	chown -R spigot:spigot /opt/spigot
 USER spigot
