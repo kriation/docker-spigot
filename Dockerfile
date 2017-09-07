@@ -32,8 +32,8 @@ RUN useradd -d /opt/spigot -M -U spigot && \
 	mkdir -p /opt/spigot/{logs,plugins,worlds} && \
 	chown -R spigot:spigot /opt/spigot
 USER spigot
-RUN echo eula=$MC_EULA >> eula.txt
-RUN sed -i 's/\(server-port=\)[[:print:]]*/\1'"$MC_SERVER_PORT"'/g' server.properties && \
+RUN echo eula=$MC_EULA >> eula.txt && \
+	sed -i 's/\(server-port=\)[[:print:]]*/\1'"$MC_SERVER_PORT"'/g' server.properties && \
 	sed -i 's/\(enable-query=\)[[:print:]]*/\1'"$MC_SERVER_QUERY"'/g' server.properties && \
 	sed -i 's/\(enable-rcon=\)[[:print:]]*/\1'"$MC_SERVER_RCON"'/g' server.properties && \
 	sed -i 's/\(query.port=\)[[:print:]]*/\1'"$MC_SERVER_QUERY_PORT"'/g' server.properties && \
