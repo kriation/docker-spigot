@@ -25,6 +25,10 @@ ENV SPIGOT_VERSION=${SPIGOT_VERSION:-latest} \
 	MC_SERVER_RCON_PORT=${MC_SERVER_RCON_PORT:-25567}  \
 	MC_SERVER_RCON_PASS=${MC_SERVER_RCON_PASS} \
 	MC_EULA=${MC_EULA:-false}
+LABEL build-date="" \
+		license="" \
+		name="Spigot-$SPIGOT_VERSION" \
+		vendor=""
 WORKDIR /opt/spigot
 COPY --from=spigot-builder /tmp/spigot/spigot*.jar spigot-$SPIGOT_VERSION.jar
 COPY config/* /opt/spigot/
