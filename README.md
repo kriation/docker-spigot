@@ -26,7 +26,7 @@ The final build image exposes the following components:
 	* /opt/spigot/plugins
 	* /opt/spigot/worlds
 
-The volumes provide the ability to externally manage log content, plugin management, and world management outside the scope of the container.
+The volumes provide the ability to externally manage log content, plugins, and world data outside the scope of the container.
 
 At runtime, the image uses a minimum JVM heap size of 1024M, the Garbage First Garbage Collector (as it's a low pause, server-style GC), and the '--noconsole' Spigot argument to notify the server that console input will not be expected.
 
