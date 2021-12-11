@@ -19,14 +19,6 @@ ARG MC_SERVER_RCON_PORT=25567
 ARG MC_SERVER_RCON_PASS
 ARG JMX_ON=false
 ARG JMX_PORT=9000
-LABEL org.label-schema.build-date=$BUILD_DATE \
-	org.label-schema.name="CentOS v7 with Spigot" \
-	org.label-schema.version=$SPIGOT_VERSION \
-	org.label-schema.url="https://github.com/kriation/docker-spigot" \
-	org.opencontainers.image.created=$BUILD_DATE \
-	org.opencontainers.image.title="CentOS v7 with Spigot" \
-	org.opencontainers.image.version=$SPIGOT_VERSION \
-	org.opencontainers.image.url="https://github.com/kriation/docker-spigot"
 ENV SPIGOT_VERSION=${SPIGOT_VERSION:-latest} \
 	MC_SERVER_MEM=${MC_SERVER_MEM:-1024M} \
 	MC_SERVER_PORT=${MC_SERVER_PORT:-25565} \
@@ -60,3 +52,20 @@ ENTRYPOINT /usr/bin/java -Xms$MC_SERVER_MEM -Xmx$MC_SERVER_MEM -XX:+UseG1GC \
 -Dcom.sun.management.jmxremote.authenticate=false \
 -Dcom.sun.management.jmxremote.ssl=false \
 -Dcom.mojang.eula.agree=$MC_EULA -jar /tmp/spigot-$SPIGOT_VERSION.jar --world-dir /opt/spigot/worlds --noconsole
+
+FROM spigot-config
+
+ARG BUILD_DATE
+ARG SPIGOT_VERSION=latest
+ENV SPIGOT_VERSION ${SPIGOT_VERSION:-latest}
+
+LABEL maintainer="armen@kriation.com"
+LABEL org.label-schema.build-date="$BUILD_DATE"
+LABEL org.label-schema.license="GPLv2"
+LABEL org.label-schema.name="Spigot Minecraft Server ($SPIGOT_VERSION) on CentOS v7"
+LABEL org.label-schema.schema-version="1.0"
+LABEL org.label-schema.vendor="armen@kriation.com"
+LABEL org.opencontainers.image.created="$BUILD_DATE"
+LABEL org.opencontainers.image.licenses="GPL-2.0-only"
+LABEL org.opencontainers.image.title="Spigot Minecraft Server ($SPIGOT_VERSION) on CentOS v7"
+LABEL org.opencontainers.image.vendor="armen@kriation.com"
