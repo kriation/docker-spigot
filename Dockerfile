@@ -46,6 +46,7 @@ RUN	sed -i 's/\(server-port=\)[[:print:]]*/\1'"$MC_SERVER_PORT"'/g' server.prope
 EXPOSE $MC_SERVER_PORT $MC_SERVER_QUERY_PORT $MC_SERVER_RCON_PORT $JMX_PORT
 VOLUME /opt/spigot
 ENTRYPOINT /usr/bin/java -Xms$MC_SERVER_MEM -Xmx$MC_SERVER_MEM -XX:+UseG1GC \
+-Dlog4j2.formatMsgNoLookups=true \
 -Dcom.sun.management.jmxremote=$JMX_ON \
 -Dcom.sun.management.jmxremote.port=$JMX_PORT \
 -Dcom.sun.management.jmxremote.local.only=false \
