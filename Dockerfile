@@ -1,4 +1,6 @@
-FROM kriation/centos7-jdk:latest as spigot-builder
+ARG JAVA_VERSION=17
+
+FROM kriation/centos7-java:${JAVA_VERSION} as spigot-builder
 ARG SPIGOT_VERSION=latest
 ENV SPIGOT_VERSION ${SPIGOT_VERSION:-latest}
 WORKDIR /tmp/spigot
@@ -7,7 +9,7 @@ RUN yum -y install git && \
     https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar && \
 	java -jar BuildTools.jar -rev $SPIGOT_VERSION
 
-FROM kriation/centos7-jdk:latest as spigot-config
+FROM kriation/centos7-java:${JAVA_VERSION} as spigot-config
 ARG SPIGOT_VERSION=latest
 ARG MC_EULA=false
 ARG MC_SERVER_MEM=1024M
