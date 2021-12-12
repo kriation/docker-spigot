@@ -29,6 +29,7 @@ The volumes provide the ability to externally manage log content, plugins, and w
 At runtime, the image uses a minimum JVM heap size of 1024M, the Garbage First Garbage Collector (as it's a low pause, server-style GC), and the '--noconsole' Spigot argument to notify the server that console input will not be expected.
 
 The arguments (and their default values) that can be passed at build time of the image are:
+* JAVA_VERSION=17
 * SPIGOT_VERSION=latest
 * MC_EULA=false
 * MC_SERVER_MEM=1024M
