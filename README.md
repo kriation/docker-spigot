@@ -21,10 +21,8 @@ The final build image exposes the following components:
 	* Server
 	* Query
 	* RCON
-* Volumes	
-	* /opt/spigot/logs
-	* /opt/spigot/plugins
-	* /opt/spigot/worlds
+* Volume
+	* /opt/spigot
 
 The volumes provide the ability to externally manage log content, plugins, and world data outside the scope of the container.
 
