@@ -57,7 +57,6 @@ ENTRYPOINT /usr/bin/java -Xms$MC_SERVER_MEM -Xmx$MC_SERVER_MEM -XX:+UseG1GC \
 -Dcom.mojang.eula.agree=$MC_EULA -jar /tmp/spigot-$SPIGOT_VERSION.jar --world-dir /opt/spigot/worlds --noconsole
 
 FROM spigot-config
-
 ARG BUILD_DATE
 ARG SPIGOT_VERSION=latest
 ENV SPIGOT_VERSION ${SPIGOT_VERSION:-latest}
