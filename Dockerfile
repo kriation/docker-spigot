@@ -60,14 +60,14 @@ FROM spigot-config
 ARG BUILD_DATE
 ARG SPIGOT_VERSION=latest
 ENV SPIGOT_VERSION ${SPIGOT_VERSION:-latest}
-
 LABEL maintainer="armen@kriation.com"
 LABEL org.label-schema.build-date="$BUILD_DATE"
 LABEL org.label-schema.license="GPLv2"
-LABEL org.label-schema.name="Spigot Minecraft Server ($SPIGOT_VERSION) on CentOS v7"
-LABEL org.label-schema.schema-version="1.0"
+LABEL org.label-schema.name="Spigot Minecraft Server on CentOS v7"
+LABEL org.label-schema.schema-version="$SPIGOT_VERSION"
 LABEL org.label-schema.vendor="armen@kriation.com"
 LABEL org.opencontainers.image.created="$BUILD_DATE"
 LABEL org.opencontainers.image.licenses="GPL-2.0-only"
-LABEL org.opencontainers.image.title="Spigot Minecraft Server ($SPIGOT_VERSION) on CentOS v7"
+LABEL org.opencontainers.image.title="Spigot Minecraft Server on CentOS v7"
+LABEL org.opencontainers.image.version="$SPIGOT_VERSION"
 LABEL org.opencontainers.image.vendor="armen@kriation.com"
