@@ -1,6 +1,6 @@
 # Spigot Minecraft Server on CentOS v7
 This set facilitates the assembly of an image that contains a version of Spigot specified at build time. The Dockerfile contains a two stage build (uses [multi-stage](https://docs.docker.com/engine/userguide/eng-image/multistage-build/)).
-The image is derived by an existing CentOS v7 image with Oracle JRE v8.
+The image is derived by an existing CentOS v7 image with Oracle Java.
 The first build step uses a Docker build arg to define which version of Spigot to build. Once complete, the second build step copies the resulting JAR and processes the Spigot server configuration based on other build args. In addition, it copies the following configuration files to the runtime directory:
 
 * banned-ips.json
